@@ -18,18 +18,18 @@ public:
 		return m_instance;
 	}
 public:
-	bool init();				//TODO:这里进行游戏的初始化
-	void move(int stepTime){}	//TODO:这里是游戏的idle，也可以通过开启逻辑线程的方式处理
-	void draw(){}				//TODO:绘制的函数
-	void input(const XE::XInputEvent &){}	//TODO:键盘或者鼠标输入的事件
-	void release(){}				//TODO:程序结束时的资源释放
+	bool init();				//init the UI items;
+	void move(int){}
+	void draw(){}
+	void input(const XE::XInputEvent &){}
+	void release(){}
 	void ctrlEventProc(int id,int eventID){if(funCB != NULL) funCB(id,eventID,pClass);}
 	void *pClass;
 	void (*funCB)(int,int,void*);
-	//下面定义UI元素
-	XE::XEdit tmp;		//输入框
-	XE::XCombo cmb;		//下拉框
-	XE::XButton btn;	//按钮
+	//TODO:Define UI items
+	XE::XEdit tmp;
+	XE::XCombo cmb;
+	XE::XButton btn;
 };
 #define UIMain UI::GetInstance()
 #endif

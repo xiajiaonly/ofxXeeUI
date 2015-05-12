@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxXEEInterface.h"
 class ofApp : public ofBaseApp{
 	public:
 		void setup();

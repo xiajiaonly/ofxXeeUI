@@ -1,7 +1,6 @@
 #include "ofxXEEInterface.h"
 #include "ofMain.h"
 #include "UI.h"
-//#include "XBasicWindow.h"
 using namespace XE;
 bool XSetup(void (*fun)(int,int,void*),void *pClass)
 {
@@ -12,11 +11,9 @@ bool XSetup(void (*fun)(int,int,void*),void *pClass)
 
 	XEE::windowWidth = ofGetWindowWidth();
 	XEE::windowHeight = ofGetWindowHeight();
-	//初始化一些变量
 	XEE::wHDC = wglGetCurrentDC();
 	XEE::wCurrentHGLRC = wglGetCurrentContext();
 	XEE::wCopyHGLRC = wglCreateContext(XEE::wHDC);
-	//wglCopyContext(XEE::wCurrentHGLRC,XEE::wCopyHGLRC,GL_ALL_ATTRIB_BITS);
 	wglShareLists(XEE::wCurrentHGLRC,XEE::wCopyHGLRC);
 	XEE::wHandle = WindowFromDC(XEE::wHDC);
 	XEE::mainThreadHandle = GetCurrentThreadId();
@@ -103,7 +100,6 @@ bool XKeyDown(int key)
 		e.keyValue = mapOfKey(key);
 	e.keyState = KEY_STATE_DOWN;
 	XEE::inputEvent(e);
-	//XEE::keyProc(e.keyValue,e.keyState);
 	UIMain.input(e);
 	return true;
 }
@@ -118,7 +114,6 @@ bool XKeyUp(int key)
 		e.keyValue = mapOfKey(key);
 	e.keyState = KEY_STATE_UP;
 	XEE::inputEvent(e);
-	//XEE::keyProc(e.keyValue,e.keyState);
 	UIMain.input(e);
 	return true;
 }
@@ -130,7 +125,6 @@ bool XMouseMoved(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_MOVE;
 	XEE::inputEvent(e);
-	//XEE::mouseProc(e.mouseX,e.mouseY,e.mouseState);
 	UIMain.input(e);
 	return true;
 }
@@ -142,7 +136,6 @@ bool XMouseDragged(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_MOVE;
 	XEE::inputEvent(e);
-	//XEE::mouseProc(e.mouseX,e.mouseY,e.mouseState);
 	UIMain.input(e);
 	return true;
 }
@@ -154,7 +147,6 @@ bool XMousePressed(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_LEFT_BUTTON_DOWN;
 	XEE::inputEvent(e);
-	//XEE::mouseProc(e.mouseX,e.mouseY,e.mouseState);
 	UIMain.input(e);
 	return true;
 }
@@ -166,7 +158,6 @@ bool XMouseReleased(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_LEFT_BUTTON_UP;
 	XEE::inputEvent(e);
-	//XEE::mouseProc(e.mouseX,e.mouseY,e.mouseState);
 	UIMain.input(e);
 	return true;
 }

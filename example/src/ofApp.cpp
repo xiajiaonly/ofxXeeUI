@@ -6,7 +6,7 @@ void ofApp::UIEvent(int id,int eventID,void*pClass)
 	ofApp &app = *(ofApp *)pClass;
 	if(id == UIMain.btn.getControlID() && eventID == XE::XButton::BTN_MOUSE_DOWN)
 	{
-		printf("°´Å¥°´ÏÂ!\n");
+		printf("Btn press down!\n");
 	}
 }
 void ofApp::setup(){
