@@ -11,5 +11,7 @@ You can download the source code here: https://github.com/xiajiaonly/XEffect2D
 
 Also can contact me at xiajia_1981@163.com. 
 
+Pull requests are welcome, as I will be developping new features and fixing bugs.
+I hope i'ts useful to you.
 
-Thank you very much for your any valuable advice. 
+![](https://github.com/xiajiaonly/ofxXeeUI/blob/master/OscTool.png)
