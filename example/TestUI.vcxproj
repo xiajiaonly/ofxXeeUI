@@ -91,15 +91,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\UI.cpp" />
+    <ClCompile Include="src\ofxXEE.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="src\ofxXEEInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\UI.h" />
+    <ClInclude Include="src\ofxXEE.h" />
     <ClInclude Include="src\ofApp.h" />
-    <ClInclude Include="src\ofxXEEInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

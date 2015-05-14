@@ -1,7 +1,7 @@
 #pragma once
-
 #include "ofMain.h"
-class ofApp : public ofBaseApp{
+#include "ofxXEE.h"
+class ofApp : public ofxXEE{
 	public:
 		void setup();
 		void update();
@@ -17,5 +17,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		static void UIEvent(int id,int eventID,void *);
+		void ctrlEventProc(int id,int eventID);
+		//TODO:Define UI items
+		XE::XEdit tmp;
+		XE::XCombo cmb;
+		XE::XButton btn;
 };

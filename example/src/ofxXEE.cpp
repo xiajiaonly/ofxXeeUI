@@ -1,8 +1,6 @@
-#include "ofxXEEInterface.h"
-#include "ofMain.h"
-#include "UI.h"
+#include "ofxXEE.h"
 using namespace XE;
-bool XSetup(void (*fun)(int,int,void*),void *pClass)
+bool ofxXEE::XSetup()
 {
 	if(!XEE::readSystemConfigData(XEE::windowData)) LogStr("读取配置文件失败!");
 
@@ -17,27 +15,24 @@ bool XSetup(void (*fun)(int,int,void*),void *pClass)
 	wglShareLists(XEE::wCurrentHGLRC,XEE::wCopyHGLRC);
 	XEE::wHandle = WindowFromDC(XEE::wHDC);
 	XEE::mainThreadHandle = GetCurrentThreadId();
-	XCtrlManger.setGame(&UIMain);
+	XCtrlManger.setGame(this);
 	//if(windowTitle != NULL) XWindow.setWindowTitle(windowTitle);	//设置窗口标题
 	//if(XEE::windowData.isInitWindowPos
 	//	|| XEE::windowData.isAlwaysTop) setWindowPos(XEE::windowData.windowPosX,XEE::windowData.windowPosY,XEE::windowData.isAlwaysTop);
 
-	XEE::registerMyMsgProc();	//没有这个函数不能切换输入法
+	XEE::registerMyMsgProc();
 	XEE::engineSysInit();
-	if(!UIMain.init()) return false;
-	UIMain.pClass = pClass;
-	UIMain.funCB = fun;
-	return true;
+	return init();
 }
-bool XUpdate()
+bool ofxXEE::XUpdate()
 {
 	XEE::engineIdle();
-	UIMain.move(ofGetLastFrameTime() * 1000.0f);
+	move(ofGetLastFrameTime() * 1000.0f);
 	return true;
 }
-bool XDraw()
+bool ofxXEE::XDraw()
 {
-	UIMain.draw();
+	draw();
 	XEE::engineDraw();
 	return true;
 }
@@ -89,7 +84,7 @@ XKeyValue mapOfKey(int key)
 	default:return XKEY_UNKNOWN;
 	}
 }
-bool XKeyDown(int key)
+bool ofxXEE::XKeyDown(int key)
 {
 	XInputEvent e;
 	e.type = EVENT_KEYBOARD;
@@ -100,10 +95,10 @@ bool XKeyDown(int key)
 		e.keyValue = mapOfKey(key);
 	e.keyState = KEY_STATE_DOWN;
 	XEE::inputEvent(e);
-	UIMain.input(e);
+	input(e);
 	return true;
 }
-bool XKeyUp(int key)
+bool ofxXEE::XKeyUp(int key)
 {
 	XInputEvent e;
 	e.type = EVENT_KEYBOARD;
@@ -114,10 +109,10 @@ bool XKeyUp(int key)
 		e.keyValue = mapOfKey(key);
 	e.keyState = KEY_STATE_UP;
 	XEE::inputEvent(e);
-	UIMain.input(e);
+	input(e);
 	return true;
 }
-bool XMouseMoved(int x,int y,int button)
+bool ofxXEE::XMouseMoved(int x,int y,int button)
 {
 	XInputEvent e;
 	e.type = EVENT_MOUSE;
@@ -125,10 +120,10 @@ bool XMouseMoved(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_MOVE;
 	XEE::inputEvent(e);
-	UIMain.input(e);
+	input(e);
 	return true;
 }
-bool XMouseDragged(int x,int y,int button)
+bool ofxXEE::XMouseDragged(int x,int y,int button)
 {
 	XInputEvent e;
 	e.type = EVENT_MOUSE;
@@ -136,10 +131,10 @@ bool XMouseDragged(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_MOVE;
 	XEE::inputEvent(e);
-	UIMain.input(e);
+	input(e);
 	return true;
 }
-bool XMousePressed(int x,int y,int button)
+bool ofxXEE::XMousePressed(int x,int y,int button)
 {
 	XInputEvent e;
 	e.type = EVENT_MOUSE;
@@ -147,10 +142,10 @@ bool XMousePressed(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_LEFT_BUTTON_DOWN;
 	XEE::inputEvent(e);
-	UIMain.input(e);
+	input(e);
 	return true;
 }
-bool XMouseReleased(int x,int y,int button)
+bool ofxXEE::XMouseReleased(int x,int y,int button)
 {
 	XInputEvent e;
 	e.type = EVENT_MOUSE;
@@ -158,6 +153,6 @@ bool XMouseReleased(int x,int y,int button)
 	e.mouseY = y;
 	e.mouseState = MOUSE_LEFT_BUTTON_UP;
 	XEE::inputEvent(e);
-	UIMain.input(e);
+	input(e);
 	return true;
 }

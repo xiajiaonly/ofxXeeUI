@@ -7,10 +7,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ofxXEEInterface.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI.cpp">
+    <ClCompile Include="src\ofxXEE.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -23,10 +20,7 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\ofxXEEInterface.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI.h">
+    <ClInclude Include="src\ofxXEE.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
