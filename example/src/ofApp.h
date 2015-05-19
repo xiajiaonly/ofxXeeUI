@@ -22,4 +22,6 @@ class ofApp : public ofxXEE{
 		XE::XEdit tmp;
 		XE::XCombo cmb;
 		XE::XButton btn;
+
+		ofImage img;
 };

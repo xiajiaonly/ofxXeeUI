@@ -14,10 +14,14 @@ void ofApp::setup(){
 	cmb.setPosition(200,100);
 	btn.initWithoutSkin("hello",128);
 	btn.setPosition(200,200);
+
+	img.loadImage("../../../OscTool.png");
 }
 void ofApp::update(){
 }
 void ofApp::draw(){
+	ofSetColor(255,255,255,255);
+	img.draw(0,0);
 }
 void ofApp::keyPressed(int key){
 }
